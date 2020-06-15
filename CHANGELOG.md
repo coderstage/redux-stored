@@ -2,6 +2,10 @@
 
 [Semantic Versioning](http://semver.org/)
 
+## v1.0.5
+
+  * Fixed component issue on screen options
+
 ## v1.0.4
 
   * Fixed sample code in readme
