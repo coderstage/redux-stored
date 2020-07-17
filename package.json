@@ -1,6 +1,6 @@
 {
   "name": "redux-stored",
-  "version": "1.0.6",
+  "version": "1.0.5",
   "description": "A react and redux implementation that stores models and call it globally from actions using middleware and from prop's component.",
   "main": "lib/index.js",
   "homepage": "https://github.com/coderstage/redux-stored#readme",
