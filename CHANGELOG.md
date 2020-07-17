@@ -2,6 +2,10 @@
 
 [Semantic Versioning](http://semver.org/)
 
+## v1.0.6
+
+  * Allow component without static map state
+
 ## v1.0.5
 
   * Fixed component issue on screen options
