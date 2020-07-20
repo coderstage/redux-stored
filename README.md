@@ -1,22 +1,14 @@
 ## Redux Stored
 
-A react and redux implementation that stores models and call it globally from actions using middleware and from prop's component. 
+A react-redux implementation that stores your logic and model in an object and call it from action using middleware and from prop's component. 
 
 All models/logic of your app will be stored in one place along with the store/state object and dispatch function.
 actions can access the models by calling it from middleware without importing it.
 
-## Installation
-
-```
-npm install redux-stored
-```
-
-## Implementation
-
-All Containers, Actions and Models/Logic will be in one place to register it to the store
-and apply the middleware in order to use the actions and call the stored logic anywhere.
 
 ## Example
+
+See example at [https://github.com/coderstage/redux-stored-sample](https://github.com/coderstage/redux-stored-sample)
 
 #### 1. Register all
 
