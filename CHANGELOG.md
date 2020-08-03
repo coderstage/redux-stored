@@ -2,6 +2,14 @@
 
 [Semantic Versioning](http://semver.org/)
 
+## v1.0.8
+
+  * Fixed state key undefined
+
+## v1.0.7
+
+  * Added declaration support for typescript
+
 ## v1.0.6
 
   * Allow component without static map state

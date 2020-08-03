@@ -6,6 +6,81 @@ All models/logic of your app will be stored in one place along with the store/st
 actions can access the models by calling it from middleware without importing it.
 
 
+## Available Functions
+
+#### Register
+Register all screens/containers, actions, and logics/models.
+
+```js
+Register({Home,About}, {getProducts}, {fetchProducts});
+```
+
+#### Middleware
+Apply middleware into the store.
+
+```js
+createStore(Reducers, Defaults, applyMiddleware(Middleware));
+```
+
+#### Bind
+Connect multiple actions to component like bindActionCreators but with the component.
+
+```js
+Bind(Component, Actions);
+```
+
+## Call a model or logic
+Model/logic can be called inside middleware from an action.
+
+```js
+// ./Redux/Actions/productsActions.js
+
+/**
+* Get products from API Service
+*/
+export const getProducts = (query) => {	
+	// Middleware
+	return (store) => {
+		/**
+		* Get Products and Dispatch
+		*/
+		store.products(query, results => store.dispatch({
+			type: 'GET_PRODUCTS',
+			payload: results
+		}))
+	};
+};
+```
+
+## Map state to props
+Map state through static class property to component props.
+```js
+// ./Screens/Products.js
+
+/**
+* Products component
+*/
+class Products extends React.Component {
+	static map = {
+		// A reducer's name
+		products: [
+			// A state and can be called like this {this.props.items}
+			'items'
+		]
+	};
+	render() {
+		return(
+			<ul>
+				{this.props.items.map((item) => (
+					<li>{item.title}</li>
+				))}
+			</ul>
+		);
+	}
+}
+```
+
+
 ## Example
 
 See example at [https://github.com/coderstage/redux-stored-sample](https://github.com/coderstage/redux-stored-sample)
@@ -33,7 +108,6 @@ import * as ProductService from '../../Models/Services/Products';
 
 /**
  * Register containers, actions and models
- * to connect to the components
  */
 export default Register(
   {
@@ -241,8 +315,6 @@ const App = () => (
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-## Documentation
-Soon
 
 ## Change Log
 
