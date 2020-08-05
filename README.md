@@ -81,7 +81,7 @@ class Products extends React.Component {
 ```
 
 ## Call a logic/model
-Call a logic inside a component with some argument
+Call a logic inside a component with argument.
 ```js
 // ./src/Models/Calculate.js
 export const calculate = (someArg) => ({
