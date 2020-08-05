@@ -12,7 +12,7 @@ actions can access the models by calling it from middleware without importing it
 Register all screens/containers, actions, and logics/models.
 
 ```js
-Register({Home,About}, {getProducts}, {fetchProducts});
+Register({Home,Products}, {getProducts}, {fetchProducts});
 ```
 
 #### Middleware
@@ -39,16 +39,16 @@ Model/logic can be called inside middleware from an action.
 * Get products from API Service
 */
 export const getProducts = (query) => {	
-	// Middleware
-	return (store) => {
-		/**
-		* Get Products and Dispatch
-		*/
-		store.products(query, results => store.dispatch({
-			type: 'GET_PRODUCTS',
-			payload: results
-		}))
-	};
+  // Middleware
+  return (store) => {
+    /**
+    * Get Products and Dispatch
+    */
+    store.products(query, results => store.dispatch({
+      type: 'GET_PRODUCTS',
+      payload: results
+    }))
+  };
 };
 ```
 
@@ -61,24 +61,48 @@ Map state through static class property to component props.
 * Products component
 */
 class Products extends React.Component {
-	static map = {
-		// A reducer's name
-		products: [
-			// A state and can be called like this {this.props.items}
-			'items'
-		]
-	};
-	render() {
-		return(
-			<ul>
-				{this.props.items.map((item) => (
-					<li>{item.title}</li>
-				))}
-			</ul>
-		);
-	}
+  static map = {
+    // A reducer's name
+    products: [
+      // A state and can be called like this {this.props.items}
+      'items'
+    ]
+  };
+  render() {
+    return(
+      <ul>
+        {this.props.items.map((item) => (
+          <li>{item.title}</li>
+        ))}
+      </ul>
+    );
+  }
 }
 ```
+
+## Call a logic from component
+```js
+// ./src/Models/Calculate.js
+export const calculate = (someArg) => ({
+  add: (num1, num2) => {
+    return num1 + num2;
+  },
+})
+
+// ./src/Screens/Products.js
+class Products extends React.Component {
+  render() {
+    const cal = this.props.calculate('someArg');
+    return(
+      <div>
+        {cal.add(465, 1526)}
+      </div>
+    );
+  }
+}
+
+```
+
 
 
 ## Example

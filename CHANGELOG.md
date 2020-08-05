@@ -2,6 +2,10 @@
 
 [Semantic Versioning](http://semver.org/)
 
+## v1.0.9
+
+  * Added object literal on model's return value and ignore action type.
+
 ## v1.0.8
 
   * Fixed state key undefined
