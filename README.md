@@ -29,20 +29,17 @@ Connect multiple actions to component like bindActionCreators but with the compo
 Bind(Component, Actions);
 ```
 
-## Call a model or logic
-Model/logic can be called inside middleware from an action.
+## Call a model
+Model can be called inside middleware from an action.
 
 ```js
 // ./Redux/Actions/productsActions.js
-
-/**
-* Get products from API Service
-*/
 export const getProducts = (query) => {	
   // Middleware
   return (store) => {
     /**
-    * Get Products and Dispatch
+    * Get Products and Dispatch,
+    * this "products" function is coming from a model
     */
     store.products(query, results => store.dispatch({
       type: 'GET_PRODUCTS',
@@ -52,35 +49,7 @@ export const getProducts = (query) => {
 };
 ```
 
-## Map state to props
-Map state through static class property to component props.
-```js
-// ./Screens/Products.js
-
-/**
-* Products component
-*/
-class Products extends React.Component {
-  static map = {
-    // A reducer's name
-    products: [
-      // A state and can be called like this {this.props.items}
-      'items'
-    ]
-  };
-  render() {
-    return(
-      <ul>
-        {this.props.items.map((item) => (
-          <li>{item.title}</li>
-        ))}
-      </ul>
-    );
-  }
-}
-```
-
-## Call a logic/model
+## Call a logic
 Call a logic inside a component with argument.
 ```js
 // ./src/Models/Calculate.js
@@ -102,6 +71,30 @@ class Products extends React.Component {
   }
 }
 
+```
+
+## Map state to props
+Map state through static class property to component props.
+```js
+// ./Screens/Products.js
+class Products extends React.Component {
+  static map = {
+    // A reducer's name
+    products: [
+      // A state and can be called like this {this.props.items}
+      'items'
+    ]
+  };
+  render() {
+    return(
+      <ul>
+        {this.props.items.map((item) => (
+          <li>{item.title}</li>
+        ))}
+      </ul>
+    );
+  }
+}
 ```
 
 
