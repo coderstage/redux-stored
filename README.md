@@ -5,6 +5,25 @@ A react-redux implementation that stores your logic and model in an object and c
 All models/logic of your app will be stored in one place along with the store/state object and dispatch function.
 actions can access the models by calling it from middleware without importing it.
 
+
+## Usage
+
+#### Register
+Register all screens/containers, actions, and logics/models.
+
+```js
+Register({Home,Products}, {getProducts}, {fetchProducts});
+```
+
+#### Middleware
+Apply middleware into the store.
+
+```js
+createStore(Reducers, Defaults, applyMiddleware(Middleware));
+```
+
+
+
 ## Call a model
 Model can be called inside middleware from an action.
 
@@ -72,35 +91,33 @@ class Products extends React.Component {
           <li>{item.title}</li>
         ))}
       </ul>
-    );
+    )
   }
 }
 ```
 
-
-## Available Functions
-
-#### Register
-Register all screens/containers, actions, and logics/models.
-
+## Call from stateless component
+Get props from parent component or even set a state/force update to parent component from child component
 ```js
-Register({Home,Products}, {getProducts}, {fetchProducts});
+// ./src/Components/Products.js
+import React from 'react'
+import {Inherit} from 'redux-stored'
+
+/**
+ * Export images
+ */
+export default Inherit((props) => {
+
+  props.parent.setState({loaded: true}) // Set state to parent component
+  return(
+    <ul>
+      {props.items.map((item) => (
+        <li>{item.title}</li>
+      ))}
+    </ul>
+  )
+})
 ```
-
-#### Middleware
-Apply middleware into the store.
-
-```js
-createStore(Reducers, Defaults, applyMiddleware(Middleware));
-```
-
-#### Bind
-Connect multiple actions to component like bindActionCreators but with the component.
-
-```js
-Bind(Component, Actions);
-```
-
 
 ## Example
 
