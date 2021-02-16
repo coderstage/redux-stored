@@ -23,7 +23,6 @@ createStore(Reducers, Defaults, applyMiddleware(Middleware));
 ```
 
 
-
 ## Call a model
 Model can be called inside middleware from an action.
 
@@ -96,7 +95,7 @@ class Products extends React.Component {
 }
 ```
 
-## Call from stateless component
+## Inherit parent props
 Get props from parent component or even set a state/force update to parent component from child component
 ```js
 // ./src/Components/Products.js
@@ -107,8 +106,9 @@ import {Inherit} from 'redux-stored'
  * Export images
  */
 export default Inherit((props) => {
+  const cal = props.calculate('someArg')
 
-  props.parent.setState({loaded: true}) // Set state to parent component
+  props.parent.setState({sum: cal.add(465, 1526)}) // Set state to parent component
   return(
     <ul>
       {props.items.map((item) => (
