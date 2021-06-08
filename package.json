@@ -20,6 +20,5 @@
     "url": "https://github.com/coderstage/redux-stored"
   },
   "author": "Ruel Mindo",
-  "license": "MIT",
-  "dependencies": {}
+  "license": "MIT"
 }

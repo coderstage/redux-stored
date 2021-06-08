@@ -108,7 +108,7 @@ import {Inherit} from 'redux-stored'
 export default Inherit((props) => {
   const cal = props.calculate('someArg')
 
-  props.parent.setState({sum: cal.add(465, 1526)}) // Set state to parent component
+  console.log(cal.add(465, 1526))
   return(
     <ul>
       {props.items.map((item) => (
